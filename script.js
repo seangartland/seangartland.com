@@ -1,3 +1,33 @@
+// ── Dark Mode Toggle ────────────────────────────
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.body;
+
+function setTheme(dark) {
+  if (dark) {
+    html.classList.add('dark');
+    themeToggle.querySelector('.icon-sun').style.display = 'none';
+    themeToggle.querySelector('.icon-moon').style.display = 'block';
+  } else {
+    html.classList.remove('dark');
+    themeToggle.querySelector('.icon-sun').style.display = 'block';
+    themeToggle.querySelector('.icon-moon').style.display = 'none';
+  }
+}
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  setTheme(savedTheme === 'dark');
+} else {
+  setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
+
+themeToggle.addEventListener('click', () => {
+  const isDark = html.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  themeToggle.querySelector('.icon-sun').style.display = isDark ? 'none' : 'block';
+  themeToggle.querySelector('.icon-moon').style.display = isDark ? 'block' : 'none';
+});
+
 // ── Mobile Menu Toggle ──────────────────────────
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileNav = document.getElementById('mobile-nav');
