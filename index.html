@@ -1,183 +1,268 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sean's Portfolio</title>
+  <title>Sean Gartland — Portfolio</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100..900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body data-theme="win95" data-screen="login">
+<body>
 
-<div id="boot-screen">
-  <div class="boot-panel">
-    <div class="boot-brand boot-brand-win">
-      <div class="boot-logo" aria-hidden="true">
-        <span class="boot-logo-red"></span>
-        <span class="boot-logo-green"></span>
-        <span class="boot-logo-blue"></span>
-        <span class="boot-logo-yellow"></span>
-      </div>
-      <div class="boot-brand-text">
-        <span class="boot-microsoft">Microsoft</span>
-        <span class="boot-windows">Windows</span>
-        <span class="boot-edition" id="boot-edition">95</span>
-      </div>
-      <p class="boot-instruction" id="boot-instruction">Click to enter the desktop.</p>
-    </div>
-
-    <div class="boot-brand boot-brand-aqua">
-      <div class="boot-aqua-mark" aria-hidden="true"></div>
-      <div class="boot-brand-text aqua-copy">
-        <span class="boot-microsoft">Mac OS X</span>
-        <span class="boot-windows">Sean Gartland</span>
-        <span class="boot-edition" id="boot-edition-aqua">Aqua</span>
-      </div>
-      <p class="boot-instruction" id="boot-instruction-aqua">Click to enter the desktop.</p>
-    </div>
-
-    <div class="boot-user-area">
-      <button id="boot-user" class="user-tile" type="button">
-        <span class="user-avatar" aria-hidden="true">SG</span>
-        <span class="user-meta">
-          <span class="user-name">Sean Gartland</span>
-          <span class="user-hint">Enter Desktop</span>
-        </span>
+  <!-- Header -->
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand">Sean Gartland</a>
+      <nav class="desktop-nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
-
-      <label class="theme-picker" for="theme-select">
-        <select id="theme-select" aria-label="Select desktop theme">
-          <option value="win95">Windows 95</option>
-          <option value="winxp">Windows XP</option>
-          <option value="win7">Windows 7</option>
-          <option value="vista">Windows Vista</option>
-          <option value="aqua">macOS Aqua</option>
-        </select>
-      </label>
     </div>
-  </div>
-</div>
-
-<div id="desktop">
-
-  <!-- Desktop icons -->
-  <div id="icon-grid">
-    <div class="desk-icon" data-id="resume"    tabindex="0"><div class="icon-img">📄</div><div class="icon-label">Resume</div></div>
-    <div class="desk-icon" data-id="linkedin"  tabindex="0"><div class="icon-img li-icon">in</div><div class="icon-label">LinkedIn</div></div>
-    <div class="desk-icon" data-id="github"    tabindex="0"><div class="icon-img gh-icon"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub"></div><div class="icon-label">GitHub</div></div>
-    <div class="desk-icon" data-id="nostalgia" tabindex="0"><div class="icon-img">📺</div><div class="icon-label">TimeSurf.TV</div></div>
-    <div class="desk-icon" data-id="pigskin"   tabindex="0"><div class="icon-img">🏈</div><div class="icon-label">Pigskin</div></div>
-    <div class="desk-icon" data-id="scoracle"  tabindex="0"><div class="icon-img">📊</div><div class="icon-label">Scoracle</div></div>
-  </div>
-
-  <!-- Windows injected by script.js -->
-  <div id="windows-container"></div>
-
-</div><!-- /desktop -->
-
-<div id="aqua-shell" aria-hidden="true" data-theme-shell="aqua">
-  <div id="aqua-menubar" data-theme-shell="aqua">
-    <div class="aqua-left">
-      <button id="aqua-apple-button" class="aqua-apple-button" type="button" aria-label="Apple menu"></button>
-      <span class="aqua-brand">Sean Gartland</span>
+    <!-- Mobile menu -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
     </div>
-    <label class="aqua-theme-picker" for="aqua-theme-select">
-      <select id="aqua-theme-select" aria-label="Select desktop theme">
-        <option value="win95">Windows 95</option>
-        <option value="winxp">Windows XP</option>
-        <option value="win7">Windows 7</option>
-        <option value="vista">Windows Vista</option>
-        <option value="aqua">macOS Aqua</option>
-      </select>
-    </label>
-    <div class="aqua-right">
-      <div id="aqua-menu-popover" class="aqua-menu-popover hidden" role="menu" aria-label="System menu" data-menu="system" data-theme-shell="aqua">
-        <button type="button" data-action="signout">Sign Out</button>
-        <button type="button" data-action="restart">Restart</button>
-      </div>
-    </div>
-  </div>
-  <div id="aqua-dock" aria-label="Application dock"></div>
-  <div id="aqua-mobile-launcher" aria-label="Application launcher">
-    <div class="aqua-mobile-grid"></div>
-    <button id="aqua-mobile-signout" type="button" class="aqua-mobile-signout">Sign Out</button>
-  </div>
-</div>
+  </header>
 
-<!-- Start Menu -->
-<div id="start-menu" class="hidden" data-menu="start" data-theme-shell="windows">
-  <div class="start-sidebar"><span class="sidebar-brand">Sean G.</span></div>
-  <div class="start-items">
-    <div class="start-item has-sub" id="item-programs">
-      <span class="si-icon">📁</span><span class="si-label">Programs</span><span class="si-arrow">►</span>
-    </div>
-    <div class="start-sep" id="run-sep"></div>
-    <div class="start-item" id="item-run">
-      <span class="si-icon">🏃</span><span class="si-label">Run...</span>
-    </div>
-    <div class="start-item" id="item-shutdown">
-      <span class="si-icon">🔌</span><span class="si-label">Shut Down...</span>
-    </div>
-  </div>
-</div>
-
-<!-- Programs submenu -->
-<div id="programs-submenu" class="hidden" data-menu="programs" data-theme-shell="windows"></div>
-
-<!-- Run dialog -->
-<div class="window dialog" id="run-dialog">
-  <div class="title-bar focused">
-    <span class="title-icon">🏃</span>
-    <span class="title-text">Run</span>
-    <div class="win-controls">
-      <button class="win-btn" id="run-close">✕</button>
-    </div>
-  </div>
-  <div class="dialog-body">
-    <div class="run-row">
-      <span class="run-big-icon">🏃</span>
-      <div class="run-right">
-        <p>Type a project name and press OK to open it.</p>
-        <div class="run-input-row">
-          <label for="run-input">Open:</label>
-          <input type="text" id="run-input" autocomplete="off" spellcheck="false" placeholder="e.g. nostalgia" />
+  <main>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-blob"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-content">
+        <!-- Left: Social icons (desktop) / Text (mobile) -->
+        <div class="hero-left">
+          <div class="hero-socials">
+            <a href="https://www.linkedin.com/in/seangartland" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/seangartland" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+          <h1 class="hero-name"><span class="text-secondary">Hi, I'm</span> <span class="text-primary">Sean</span></h1>
+          <h3 class="hero-title"><span class="typing-text" id="typing-text"></span><span class="typing-cursor">|</span></h3>
+          <p class="hero-desc">Data analytics leader specializing in AI-powered insights, automation, and self-service analytics. Based in San Francisco.</p>
+        </div>
+        <!-- Right: Headshot -->
+        <div class="hero-right">
+          <div class="hero-image-container">
+            <img src="assets/headshot/irlpfp.jpg" alt="Sean Gartland" class="hero-image" />
+          </div>
         </div>
       </div>
+      <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </a>
     </div>
-    <div class="run-buttons">
-      <button class="dlg-btn" id="run-ok">OK</button>
-      <button class="dlg-btn" id="run-cancel">Cancel</button>
+
+    <div class="sections-wrapper">
+      <!-- About -->
+      <section id="about" class="content-section">
+        <h2 class="section-heading">About Me</h2>
+        <h3 class="section-subtitle">Introducing me, myself, and I</h3>
+        <div class="about-text">
+          <p>Hey there! My name is Sean and I'm a data analytics leader based in San Francisco. I specialize in building AI-powered analytics systems, automation pipelines, and self-service tools that bridge technical and business teams.</p>
+          <p>Currently leading Data Analytics at Serena &amp; Lily, where I've implemented AI analytics platforms, automated Slack/Zoom intake through Jira, and built self-service tools used by hundreds of business users. Previously at Dolls Kill and Williams-Sonoma, with experience spanning strategy, FP&amp;A, and data.</p>
+          <p>I'm passionate about the intersection of AI and analytics — using tools like Claude, LLMs, and modern data stacks to make businesses smarter and faster.</p>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="content-section">
+        <h2 class="section-heading">Experience</h2>
+        <h3 class="section-subtitle">My journey so far</h3>
+        <div class="experience-list">
+          <div class="experience-item">
+            <div class="exp-logo"><img src="assets/serena-lily-logo.png" alt="Serena & Lily" /></div>
+            <div class="exp-details">
+              <div class="exp-header">
+                <div>
+                  <h4 class="exp-company">Serena &amp; Lily</h4>
+                  <p class="exp-role">Senior Director of Data Analytics</p>
+                </div>
+                <span class="exp-date">2021 — Present</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Automate Slack/Zoom analytics intake through Jira, agent dev/QA, and GitHub Actions CI</li>
+                <li>Bridge Claude chat with semantic-layer tools for self-service analytics used by hundreds of business users</li>
+                <li>Lead org-wide data acquisition, modeling, Snowflake/Sigma governance, and analytics enablement</li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-item">
+            <div class="exp-logo exp-logo--dark"><img src="assets/dolls-kill-logo.svg" alt="Dolls Kill" /></div>
+            <div class="exp-details">
+              <div class="exp-header">
+                <div>
+                  <h4 class="exp-company">Dolls Kill</h4>
+                  <p class="exp-role">Head of Analytics &amp; Strategic Finance</p>
+                </div>
+                <span class="exp-date">2019 — 2021</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Owned strategy, FP&amp;A, and data for a Sequoia-backed fashion startup</li>
+                <li>Led quarterly board meetings</li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-item">
+            <div class="exp-logo exp-logo--white"><img src="assets/williams-sonoma-logo.png" alt="Williams-Sonoma" /></div>
+            <div class="exp-details">
+              <div class="exp-header">
+                <div>
+                  <h4 class="exp-company">Williams-Sonoma, Inc.</h4>
+                  <p class="exp-role">Director of Strategic Planning</p>
+                </div>
+                <span class="exp-date">2015 — 2019</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Led demand forecasting software rollout across 50+ users and executive stakeholders</li>
+                <li>Identified model parameter drift causing 10%+ weekly forecast swings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="content-section">
+        <h2 class="section-heading">Technical Projects</h2>
+        <h3 class="section-subtitle">My recent work</h3>
+        <div class="projects-grid">
+          <a href="https://timesurf.tv" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="project-image-wrap">
+              <img src="assets/projects/timesurf-preview.png" alt="TimeSurf.TV" class="project-image" />
+            </div>
+            <div class="project-info">
+              <h4 class="project-title">TimeSurf.TV</h4>
+              <p class="project-desc">Retro channel-surfer for nostalgic clips by year. Vanilla JS on Vercel.</p>
+            </div>
+          </a>
+          <a href="https://fantasyfootballopen.com" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="project-image-wrap">
+              <img src="assets/projects/ffo-preview.png" alt="Fantasy Football Open" class="project-image" />
+            </div>
+            <div class="project-info">
+              <h4 class="project-title">Fantasy Football Open</h4>
+              <p class="project-desc">Season-long salary-cap fantasy football with global leaderboards. React, TypeScript, PostgreSQL.</p>
+            </div>
+          </a>
+          <a href="https://scoreacle.vercel.app" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="project-image-wrap">
+              <img src="https://opengraph.githubassets.com/1/seangartland/scoracle" alt="Scoracle" class="project-image" />
+            </div>
+            <div class="project-info">
+              <h4 class="project-title">Scoracle</h4>
+              <p class="project-desc">Live sports scoring and analytics dashboard.</p>
+            </div>
+          </a>
+        </div>
+        <a href="https://github.com/seangartland" target="_blank" rel="noopener noreferrer" class="view-more-link">
+          View more projects on GitHub
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="content-section skills-section">
+        <h2 class="section-heading">Skills</h2>
+        <h3 class="section-subtitle">Tools I use</h3>
+        <div class="marquee-wrapper">
+          <!-- Row 1: Languages -->
+          <div class="marquee-row">
+            <div class="marquee-track marquee-left">
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" /><small>Python</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" /><small>TypeScript</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" /><small>JavaScript</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqldeveloper/sqldeveloper-original.svg" alt="SQL" /><small>SQL</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" /><small>HTML</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" /><small>CSS</small></span>
+              <!-- duplicate set -->
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" /><small>Python</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" /><small>TypeScript</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" /><small>JavaScript</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqldeveloper/sqldeveloper-original.svg" alt="SQL" /><small>SQL</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" /><small>HTML</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" /><small>CSS</small></span>
+            </div>
+          </div>
+          <!-- Row 2: Frameworks -->
+          <div class="marquee-row">
+            <div class="marquee-track marquee-right">
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" /><small>React</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" /><small>Next.js</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" /><small>Flask</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" /><small>Tailwind</small></span>
+              <span class="skill-icon"><img src="assets/snowflake-original.svg" alt="Snowflake" /><small>Snowflake</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" /><small>Postgres</small></span>
+              <!-- duplicate set -->
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" /><small>React</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" /><small>Next.js</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" /><small>Flask</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" /><small>Tailwind</small></span>
+              <span class="skill-icon"><img src="assets/snowflake-original.svg" alt="Snowflake" /><small>Snowflake</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" /><small>Postgres</small></span>
+            </div>
+          </div>
+          <!-- Row 3: Tools -->
+          <div class="marquee-row">
+            <div class="marquee-track marquee-left">
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" /><small>Docker</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" /><small>Git</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" /><small>GitHub</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" /><small>Linux</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" /><small>AWS</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" alt="Vercel" /><small>Vercel</small></span>
+              <!-- duplicate set -->
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" /><small>Docker</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" /><small>Git</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" /><small>GitHub</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" /><small>Linux</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" /><small>AWS</small></span>
+              <span class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" alt="Vercel" /><small>Vercel</small></span>
+            </div>
+          </div>
+          <!-- Gradient overlays -->
+          <div class="marquee-fade-left"></div>
+          <div class="marquee-fade-right"></div>
+        </div>
+      </section>
     </div>
-  </div>
-</div>
+  </main>
 
-<!-- Shutdown screen -->
-<div id="shutdown-screen" class="hidden">
-  <div class="shutdown-inner">
-    <div class="shutdown-logo">⊞</div>
-    <div class="shutdown-text">It is now safe to<br>turn off your computer.</div>
-    <button id="shutdown-restart">↺ Restart</button>
-  </div>
-</div>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <h2 class="footer-brand">Sean Gartland</h2>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/seangartland" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/seangartland" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+      <p class="footer-copy">Courtesy of yours truly.</p>
+    </div>
+  </footer>
 
-<!-- Taskbar -->
-<div id="taskbar" data-theme-shell="windows">
-  <button id="start-btn" data-theme-shell="windows"><span class="start-logo">⊞</span><strong>Start</strong></button>
-  <div class="taskbar-divider"></div>
-  <div id="taskbar-windows" data-menu="taskbar-windows" data-theme-shell="windows"></div>
-  <label class="taskbar-theme-picker" for="taskbar-theme-select">
-    <select id="taskbar-theme-select" aria-label="Select desktop theme">
-      <option value="win95">Windows 95</option>
-      <option value="winxp">Windows XP</option>
-      <option value="win7">Windows 7</option>
-      <option value="vista">Windows Vista</option>
-      <option value="aqua">macOS Aqua</option>
-    </select>
-  </label>
-  <div class="taskbar-divider taskbar-spacer"></div>
-  <div id="taskbar-clock-wrap"><span id="taskbar-clock"></span></div>
-</div>
+  <!-- Scroll to top -->
+  <button id="scroll-top" class="scroll-top-btn" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
