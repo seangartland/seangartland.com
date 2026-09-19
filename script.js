@@ -39,10 +39,10 @@ scrollTopBtn.addEventListener('click', () => {
 const typingEl = document.getElementById('typing-text');
 const roles = [
   'Data Analytics Leader',
-  'Software Engineer',
-  'AI & Automation Enthusiast',
+  'Full Stack Solo Dev',
+  'Agentic Engineer',
   'Self-Service Analytics Builder',
-  'Snowflake / Sigma Specialist'
+  'Snowflake / Sigma Admin'
 ];
 let roleIndex = 0;
 let charIndex = 0;
