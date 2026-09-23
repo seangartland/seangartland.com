@@ -72,7 +72,7 @@ const roles = [
   'Full Stack Solo Dev',
   'Agentic Engineer',
   'Self-Service Analytics Builder',
-  'Snowflake / Sigma Admin'
+  'Snowflake Platform Admin'
 ];
 let roleIndex = 0;
 let charIndex = 0;
