@@ -65,40 +65,4 @@ scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ── Typing Animation ──────────────────────────
-const typingEl = document.getElementById('typing-text');
-const roles = [
-  'Data Analytics Leader',
-  'Full Stack Solo Dev',
-  'Agentic Engineer',
-  'Self-Service Analytics Builder',
-  'Snowflake Platform Admin'
-];
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeRole() {
-  const current = roles[roleIndex];
-  if (isDeleting) {
-    charIndex--;
-    typingEl.textContent = current.substring(0, charIndex);
-  } else {
-    charIndex++;
-    typingEl.textContent = current.substring(0, charIndex);
-  }
-
-  let delay = isDeleting ? 40 : 80;
-
-  if (!isDeleting && charIndex === current.length) {
-    delay = 2000;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-    delay = 500;
-  }
-
-  setTimeout(typeRole, delay);
-}
-typeRole();
+// ──

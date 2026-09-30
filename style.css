@@ -505,6 +505,14 @@ img { display: block; max-width: 100%; }
   text-align: center;
   white-space: nowrap;
 }
+.skill-icon .skill-text-only {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--fg);
+}
 
 @keyframes marquee {
   0%   { transform: translateX(0); }
