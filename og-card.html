@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @font-face {
+    font-family: 'Roboto Serif';
+    src: url('assets/fonts/roboto-serif-latin.woff2') format('woff2');
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    background: #fffaeb;
+    font-family: 'Roboto Serif', Georgia, serif;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card { display: flex; align-items: center; gap: 70px; padding: 0 90px; width: 100%; }
+  .photo {
+    width: 300px; height: 300px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+    border: 6px solid #e0b05c;
+  }
+  .name { font-size: 84px; font-weight: 700; color: #2c1511; line-height: 1.05; }
+  .title { font-size: 40px; color: #b07f2e; margin-top: 14px; font-style: italic; }
+  .tag { font-size: 26px; color: #65443d; margin-top: 22px; line-height: 1.45; max-width: 640px; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .url { font-size: 24px; color: #2c1511; margin-top: 30px; letter-spacing: 2px; font-family: -apple-system, 'Segoe UI', sans-serif; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="photo" src="assets/headshot/irlpfp.jpg" alt="" />
+    <div>
+      <div class="name">Sean Gartland</div>
+      <div class="title">AI &amp; Data Analytics Leader</div>
+      <div class="tag">Building high-impact analytics teams, trusted data platforms, and practical AI systems.</div>
+      <div class="url">SEANGARTLAND.COM</div>
+    </div>
+  </div>
+</body>
+</html>

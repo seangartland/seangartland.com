@@ -2,7 +2,7 @@
 
 Personal portfolio and resume site for Sean Gartland — data analytics leader specializing in AI-powered insights, automation, and self-service analytics.
 
-**Live:** [seangartland.com](https://seangartland.com)
+**Live:** [seangartland.com](https://www.seangartland.com)
 
 ## Tech Stack
 
