@@ -1,68 +1,55 @@
-// ── Dark Mode Toggle ────────────────────────────
+const root = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
-const html = document.body;
+const themeColor = document.querySelector('meta[name="theme-color"]');
 
-function setTheme(dark) {
-  if (dark) {
-    html.classList.add('dark');
-    themeToggle.querySelector('.icon-sun').style.display = 'none';
-    themeToggle.querySelector('.icon-moon').style.display = 'block';
-  } else {
-    html.classList.remove('dark');
-    themeToggle.querySelector('.icon-sun').style.display = 'block';
-    themeToggle.querySelector('.icon-moon').style.display = 'none';
-  }
+function applyTheme(dark) {
+  root.classList.toggle('dark', dark);
+  themeToggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  themeColor.content = dark ? '#1a1d23' : '#fffaeb';
 }
 
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  setTheme(savedTheme === 'dark');
-} else {
-  setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
-}
-
+applyTheme(root.classList.contains('dark'));
 themeToggle.addEventListener('click', () => {
-  const isDark = html.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  themeToggle.querySelector('.icon-sun').style.display = isDark ? 'none' : 'block';
-  themeToggle.querySelector('.icon-moon').style.display = isDark ? 'block' : 'none';
+  const dark = !root.classList.contains('dark');
+  applyTheme(dark);
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
 });
 
-// ── Mobile Menu Toggle ──────────────────────────
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const menuButton = document.getElementById('mobile-menu-btn');
 const mobileNav = document.getElementById('mobile-nav');
 
-if (mobileMenuBtn && mobileNav) {
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileNav.classList.toggle('open');
-  });
-  // Close on link click
-  mobileNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileNav.classList.remove('open'));
-  });
+function closeMenu({ restoreFocus = false } = {}) {
+  if (!mobileNav.classList.contains('open')) return;
+  mobileNav.classList.remove('open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open menu');
+  if (restoreFocus) menuButton.focus();
 }
 
-// ── Sticky Header Shadow ───────────────────────
+menuButton.addEventListener('click', () => {
+  const open = !mobileNav.classList.contains('open');
+  mobileNav.classList.toggle('open', open);
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  if (open) mobileNav.querySelector('a').focus();
+});
+mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeMenu({ restoreFocus: true });
+});
+document.addEventListener('pointerdown', event => {
+  if (!mobileNav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+});
+
 const header = document.getElementById('site-header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 10) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+const scrollTopButton = document.getElementById('scroll-top');
+function updateScrollState() {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+  scrollTopButton.classList.toggle('visible', window.scrollY > 400);
+}
+window.addEventListener('scroll', updateScrollState, { passive: true });
+updateScrollState();
+scrollTopButton.addEventListener('click', () => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
 });
-
-// ── Scroll-to-Top Button ───────────────────────
-const scrollTopBtn = document.getElementById('scroll-top');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 400) {
-    scrollTopBtn.classList.add('visible');
-  } else {
-    scrollTopBtn.classList.remove('visible');
-  }
-});
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ──
